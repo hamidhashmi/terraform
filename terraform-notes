@@ -186,4 +186,28 @@ $ terraform destroy -target aws_instance.<your resource name>
 
 The name can be obtained from terraform state list command
 
+14. $ terraform plan -var-file='../../../private/terraform.tfvars'
+╷
+│ Error: Invalid reference
+│
+│   on modeuleone.tf line 16, in provider "aws":
+│   16:   region = us-east-1
+│
+│ A reference to a resource type must be followed by at least one attribute
+│ access, specifying the resource name.
+╵
 
+soln = "us -east-1" ## use double quotes
+
+15.
+aws_instance.tf-nginx: Creating...
+╷
+│ Error: Error launching source instance: InvalidGroup.NotFound: The security group 'tf-web-sg' does not exist in VPC 'vpc-083b807623e8204e8'
+│       status code: 400, request id: a97a7bcd-c063-4e65-a392-3101af347855
+│
+│   with aws_instance.tf-nginx,
+│   on modeuleone.tf line 85, in resource "aws_instance" "tf-nginx":
+│   85: resource "aws_instance" "tf-nginx" {        
+│
+
+soln: you have not provided the id of the SG that should be attached to the instance. Use security_groups = [ aws_security_group.tf-web-sg.id]
