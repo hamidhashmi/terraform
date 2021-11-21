@@ -1,0 +1,44 @@
+##### Terraform target command applications #####
+
+1. a plain terraform destroy command winds up your entire infrastructure declared in the tf file.
+What if you only want to terminate the EC2 instance and leave the other VPC components intact?
+The method is to use the terraform target command with -target option as illustrated below.
+
+a. find the name of the resource that needs to be destroyed.
+
+$ terraform state list
+
+PS C:\Users\hamid\repos\terraform\project-1> terraform state list
+aws_eip.tf-ip
+aws_instance.web-server
+aws_internet_gateway.tf-web-igw
+aws_network_interface.web-tf-if
+aws_route_table.tf-web-rt
+aws_route_table_association.web-subnet-tf
+aws_security_group.web-tf-sg
+aws_subnet.internet-facing
+aws_vpc.terraform-tut
+
+b. terraform destroy -target aws_instance.web-server
+  Enter a value: yes
+
+aws_instance.web-server: Destroying... [id=i-02fc1082bfb019aba]
+aws_instance.web-server: Still destroying... [id=i-02fc1082bfb019aba, 10s elapsed]
+aws_instance.web-server: Still destroying... [id=i-02fc1082bfb019aba, 20s elapsed]
+aws_instance.web-server: Still destroying... [id=i-02fc1082bfb019aba, 30s elapsed]
+aws_instance.web-server: Still destroying... [id=i-02fc1082bfb019aba, 40s elapsed]
+aws_instance.web-server: Destruction complete after 41s
+
+2. To deploy a particular resource
+
+$ terraform -targt aws_instance.web-server apply
+
+aws_instance.web-server: Creating...
+aws_instance.web-server: Still creating... [10s elapsed]
+aws_instance.web-server: Still creating... [20s elapsed]
+aws_instance.web-server: Still creating... [30s elapsed]
+aws_instance.web-server: Still creating... [40s elapsed]
+aws_instance.web-server: Still creating... [50s elapsed]
+aws_instance.web-server: Creation complete after 54s [id=i-0cb17498e4390f753]
+
+

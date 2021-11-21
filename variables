@@ -1,0 +1,5 @@
+#### Use variables in terraform ####
+
+1. Variables are defined in the main tf file.
+The description is done in .tfvars file
+
