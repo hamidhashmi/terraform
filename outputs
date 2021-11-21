@@ -1,0 +1,16 @@
+#### Output syntax ####
+
+Outputs are values of our configuration that are printed in the terminal when our configurations are run ####
+
+
+output "name_label" {
+  value = output_value
+  description = ""
+  sensitive = true | false
+}
+
+example:
+
+output "aws_instance_public_dns" {
+  value = aws_intance.tf-nginx.public_dns
+}

@@ -1,0 +1,12 @@
+
+#### Terraform makes sure your configs are
+#### Just verifies. 
+
+
+1. terraform init 
+
+2. terraform validate - checks the syntax and logic.
+Points the error and line. At times provides a suggestion too. 
+
+
+
