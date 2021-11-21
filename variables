@@ -2,4 +2,21 @@
 
 1. Variables are defined in the main tf file.
 The description is done in .tfvars file
+syntax:
 
+variable "<variable_name>" {
+  type = string
+  description  = string
+  default = string 
+  sensitive = true | false
+
+
+example:
+
+variable "aws_region" {
+  type = string
+  description = "region to use AWS resources"
+  default = "us-east-1"  ## use this region when no region is specified
+  sensitive = false ### not a sensitive date, it can be printed in log files.. Default = false
+
+to reference the variable use = var.<name_label>
