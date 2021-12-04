@@ -1,5 +1,1 @@
-# hello-world
-
-Hey there!
-
-This is Hamid and I am just getting my hands dirty with Terraform! Wish me luck mates! 
+#### Infrastructure as a code is provisioning infrastructure through software to achieve consistent and predictable deployments ####
